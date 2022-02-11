@@ -1,0 +1,61 @@
+<form [formGroup]="reactiveForm" (ngSubmit)="onSubmit()">
+    <h3>User Resister Form</h3>
+    <div class="mb-3">
+        <label for="firstname" class="form-label">First Name*</label>
+        <input type="text" formControlName="firstname" class="form-control" placeholder="Enter Firstname">
+        <div class="error_container"
+            *ngIf="FormControls.firstname && FormControls.firstname.touched && FormControls.firstname.invalid">
+            <div class="error_msg valid_f" *ngIf="FormControls.firstname.errors.required">This field is mandatory</div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="lastname" class="form-label">Last Name*</label>
+        <input type="text" formControlName="lastname" class="form-control" placeholder="Enter Lastname">
+        <div class="error_container"
+            *ngIf="FormControls.lastname && FormControls.lastname.touched && FormControls.lastname.invalid">
+            <div class="error_msg valid_f" *ngIf="FormControls.lastname.errors.required">This field is mandatory</div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="dob" class="form-label">DOB*</label>
+        <input type="date" formControlName="dob" class="form-control">
+        <div class="error_container" *ngIf="FormControls.dob && FormControls.dob.touched && FormControls.dob.invalid">
+            <div class="error_msg valid_f" *ngIf="FormControls.dob.errors.required">This field is mandatory</div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="gender" class="form-label">Gender*</label><br>
+        <input type="radio" formControlName="gender" name="gender" value="male"> Male
+        <input type="radio" formControlName="gender" name="gender" value="female"> Female
+        <div class="error_container"
+            *ngIf="FormControls.gender && FormControls.gender.touched && FormControls.gender.invalid">
+            <div class="error_msg valid_f" *ngIf="FormControls.gender.errors.required">This field is mandatory</div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="phone" class="form-label">Phone*</label>
+        <input type="text" formControlName="phone" class="form-control" placeholder="Enter Phone Number">
+        <div class="error_container"
+            *ngIf="FormControls.phone && FormControls.phone.touched && FormControls.phone.invalid">
+            <div  class="error_msg valid_f " *ngIf="FormControls.phone.errors.required">This field is mandatory</div>
+          <div  class="error_msg valid_f " *ngIf="FormControls.phone.errors.pattern">Doesn't look like a Phone Number</div>
+
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Email address*</label>
+        <input type="email" formControlName="email" class="form-control" placeholder="Enter Email">
+        <div class="error_container"
+            *ngIf="FormControls.email && FormControls.email.touched && FormControls.email.invalid">
+            <div class="error_msg valid_f" *ngIf="FormControls.email.errors.required">This field is mandatory</div>
+        </div>
+    </div>
+    <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password*</label>
+        <input type="password" formControlName="password" class="form-control" id="exampleInputPassword1">
+    </div>
+
+    <button type="submit" [disabled]="!reactiveForm.valid" class="btn btn-primary">Save</button>
+
+</form>
+{{user | json}}

@@ -1,1 +1,8 @@
 /* You can add global styles to this file, and also import other style files */
+form{
+    padding-left: 200px;
+    padding-right: 200px;
+}
+.valid_f{
+    color: red;
+}
